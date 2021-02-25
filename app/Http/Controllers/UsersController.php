@@ -44,7 +44,7 @@ class UsersController extends Controller
             'password' => 'required|same:conf_password|min:6',
             'conf_password' => 'required',
 
-        ], [],["name" => 'اسم المستخدم', 'email' => 'البريد الالكتروني','password'=>'كلمة المرور', 'conf_password'=>'تاكيد كلمة المرور' ]);
+        ], [],["name" => 'اسم المستخدم', 'email' => 'البريد الالكتروني','password'=>'كلمة المرور', 'conf_password'=>'تاكيد كلمة المرور  ' ]);
         //
         $user= new User();
         $user->name = $request->name;
