@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Foundation\Auth\User as AuthUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule as ValidationRule;
 
 class UsersController extends Controller
 {
@@ -16,7 +19,8 @@ class UsersController extends Controller
     public function index()
     {
         //
-        return view('dashboard.users.index');
+        $users=User::get();
+        return view('dashboard.users.index', compact('users'));
 
     }
 
@@ -76,6 +80,8 @@ class UsersController extends Controller
     public function edit($id)
     {
         //
+        $user=User::find($id);
+        return view('dashboard.users.create', compact('user'));
     }
 
     /**
@@ -88,6 +94,22 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $validated = $request->validate([
+            'name' =>  ['required', ValidationRule::unique('users')->ignore($id), 'max:100'],
+            'email' => ['required', ValidationRule::unique('users')->ignore($id)],
+            'password' => 'nullable|same:conf_password|min:6',
+            //'conf_password' => 'required',
+
+        ], [],["name" => 'اسم المستخدم', 'email' => 'البريد الالكتروني','password'=>'كلمة المرور', 'conf_password'=>'تاكيد كلمة المرور  ' ]);
+        //
+        $user= User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        if($request->password){
+            $user->password=Hash::make($request->password);
+        }
+        $user->save();
+        return redirect()->back()->with('message', 'تم تعديل المستخدم بنجاح');
     }
 
     /**
@@ -99,5 +121,8 @@ class UsersController extends Controller
     public function destroy($id)
     {
         //
+        $user=User::find($id);
+        $user->delete();
+        return redirect()->back()->with('message', 'تم حذف المستخدم بنجاح');
     }
 }

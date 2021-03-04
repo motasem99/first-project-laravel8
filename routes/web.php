@@ -24,6 +24,9 @@ Route::group(['middleware'=> 'auth'], function () {
         Route::get('/users', [UsersController::class, 'index']);
         Route::get('/users/create', [UsersController::class, 'create']);
         Route::post('/users/save', [UsersController::class, 'store']);
+        Route::get('/users/delete/{id}', [UsersController::class, 'destroy']);
+        Route::post('/users/update/{id}', [UsersController::class, 'update']);
+        Route::get('/users/{id}/edit', [UsersController::class, 'edit']);
     });
 });
 

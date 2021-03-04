@@ -6,10 +6,14 @@
         <div class="col-md-12">
         <div class="box box-primary">
                 <div class="box-header with-border">
+                @if(isset($user))
+                  <h3 class="box-title">تعديل مستخدم</h3>
+                  @else
                   <h3 class="box-title">اضافة مستخدم</h3>
+                  @endif
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" method="post" action="/dashboard/users/save">
+                <form role="form" method="post" @if(isset($user)) action="/dashboard/users/update/{{$user->id}}" @else action="/dashboard/users/save" @endif>
                 @csrf
                     @if(session()->has('message'))
                         <div class="alert alert-success">
@@ -19,14 +23,14 @@
                   <div class="box-body">
                   <div class="form-group">
                       <label for="exampleInputEmail1">الاسم</label>
-                      <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="exampleInputEmail1" placeholder="الاسم" value="{{old('name')}}">
+                      <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="exampleInputEmail1" placeholder="الاسم" value="{{old('name', $user->name)}}">
                       @error('name')
                             <div class="alert alert-danger">{{ $message }}</div>
                       @enderror
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">البريد الالكتروني</label>
-                      <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="exampleInputEmail1" placeholder="البريد الالكتروني" value="{{old('email')}}">
+                      <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="exampleInputEmail1" placeholder="البريد الالكتروني" value="{{old('email', $user->email)}}">
                       @error('email')
                             <div class="alert alert-danger">{{ $message }}</div>
                       @enderror

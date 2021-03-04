@@ -16,6 +16,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
+    <link rel="stylesheet" href="{{url('assets')}}/plugins/datatables/dataTables.bootstrap.css">
     <link rel="stylesheet" href="{{url('assets')}}/dist/css/AdminLTE.css">
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
@@ -365,7 +366,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Bootstrap 3.3.4 -->
     <script src="{{url('assets')}}/bootstrap/js/bootstrap.min.js"></script>
     <!-- AdminLTE App -->
+    <script src="{{url('assets')}}/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{url('assets')}}/plugins/datatables/dataTables.bootstrap.min.js"></script>
     <script src="{{url('assets')}}/dist/js/app.min.js"></script>
+
+    <!-- page script -->
+    <script>
+      $(function () {
+        $("#example1").DataTable();
+        $('#example2').DataTable({
+          "paging": true,
+          "lengthChange": false,
+          "searching": false,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false
+        });
+      });
+    </script>
 
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
          Both of these plugins are recommended to enhance the
