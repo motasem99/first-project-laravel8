@@ -199,7 +199,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <a href="#" class="btn btn-default btn-flat">Profile</a>
                     </div>
                     <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Sign out</a>
+
+                      <form id="frm-logout" action="{{ route('logout') }}" method="POST">
+                        {{ csrf_field() }}
+                        <button type="submit" class="btn btn-default btn-flat" >Sign out</button>
+                      </form>
                     </div>
                   </li>
                 </ul>
@@ -245,13 +249,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <ul class="sidebar-menu">
             <li class="header">HEADER</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-            <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
+            <li class="active"><a href="{{ url('dashboard') }}"><i class="fa fa-link"></i> <span>الرئيسية</span></a></li>
             <li class="treeview">
-              <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <a href="#"><i class="fa fa-link"></i> <span>المستخدمين</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="#">Link in level 2</a></li>
-                <li><a href="#">Link in level 2</a></li>
+                <li><a href="{{ url('dashboard/users/create') }}">اضافة مستخدم</a></li>
+                <li><a href="{{ url('dashboard/users') }}">عرض المستخدمين</a></li>
               </ul>
             </li>
           </ul><!-- /.sidebar-menu -->

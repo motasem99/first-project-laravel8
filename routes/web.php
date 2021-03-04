@@ -21,6 +21,7 @@ Route::get('/', function () {
 Route::group(['middleware'=> 'auth'], function () {
     Route::group(['prefix'=>'dashboard'], function () {
         Route::get('/', [HomeController::class, 'index'])->name('dashboard');
+        Route::get('/users', [UsersController::class, 'index']);
         Route::get('/users/create', [UsersController::class, 'create']);
         Route::post('/users/save', [UsersController::class, 'store']);
     });
