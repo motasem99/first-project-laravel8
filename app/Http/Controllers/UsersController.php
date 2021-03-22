@@ -20,7 +20,7 @@ class UsersController extends Controller
     public function index()
     {
         //
-        $users=User::get();
+        $users=User::with('shift')->orderBy('id', 'DESC')->get();
         return view('dashboard.users.index', compact('users'));
 
     }
@@ -60,7 +60,7 @@ class UsersController extends Controller
         $user->email_verified_at=date('Y-m-d H:i:s');
         $user->password=Hash::make($request->password);
         $user->shift_id = $request->shift_id;
-        
+
         $user->save();
         return redirect()->back()->with('message', 'تم اضافة المستخدم بنجاح');
     }

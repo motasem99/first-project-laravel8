@@ -22,6 +22,7 @@
                         <th>اسم الموظف</th>
                         <th>البريد الالكتروني</th>
                         <th>تاريخ التفعيل</th>
+                        <th>الوردية</th>
                         <th>عمليات</th>
                       </tr>
                     </thead>
@@ -31,6 +32,7 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->email_verified_at }}</td>
+                        <td>{{ $user->shift? $user->shift->name: '' }}</td>
                         <td>
                         <a href="{{ url('dashboard/users/delete/'.$user->id) }}"><i class="fa fa-fw fa-times-circle" style="font-size: 23px; color: red"></i></a>
                         <a href="{{ url('dashboard/users/'.$user->id.'/edit') }}"><i class="fa fa-fw fa-edit" style="font-size: 23px; color: green"></i></a>
