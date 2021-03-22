@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Shift;
 use Illuminate\Http\Request;
 
 class ShiftsController extends Controller
@@ -36,7 +37,23 @@ class ShiftsController extends Controller
     public function store(Request $request)
     {
         //
-        dd($request->all());
+        $validated = $request->validate([
+            'name' => 'required',
+
+        ], [],["name" => 'اسم المستخدم']);
+        $shift = new Shift();
+        $shift->name=$request->name;
+        $shift->start_at=$request->start_at;
+        $shift->end_at=$request->end_at;
+        $shift->saturday=$request->saturday;
+        $shift->sunday=$request->sunday;
+        $shift->monday=$request->monday;
+        $shift->tuesday=$request->tuesday;
+        $shift->wednesday=$request->wednesday;
+        $shift->thursday=$request->thursday;
+        $shift->friday=$request->friday;
+
+        $shift->save();
     }
 
     /**

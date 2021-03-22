@@ -21,7 +21,7 @@ class CreateShiftsTable extends Migration
             $table->time('end_at')->nullable();
             $table->boolean('saturday')->default(1);
             $table->boolean('sunday')->default(1);
-            $table->boolean('mondayday')->default(1);
+            $table->boolean('monday')->default(1);
             $table->boolean('tuesday')->default(1);
             $table->boolean('wednesday')->default(1);
             $table->boolean('thursday')->default(1);
