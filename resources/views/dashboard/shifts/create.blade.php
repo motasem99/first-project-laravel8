@@ -13,7 +13,7 @@
                   @endif
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" method="post" >
+                <form role="form" method="post" id="saveShift" >
                 @csrf
                     @if(session()->has('message'))
                         <div class="alert alert-success">
@@ -83,3 +83,24 @@
 </section>
 
 @endsection
+
+@push('jquery')
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('#saveShift').validate({
+                rules: {
+                    name: {required: true},
+                    start_at: {required: true},
+                    end_at: {required: true}
+                },
+                messages: {
+                    name: {required: 'هذا الحقل مطلوب'},
+                    start_at: {required: 'هذا الحقل مطلوب'},
+                    end_ar: {required: 'هذا الحفل مطلوب'},
+                }
+            });
+        });
+    </script>
+@endpush
