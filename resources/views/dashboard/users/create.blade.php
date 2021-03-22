@@ -23,14 +23,14 @@
                   <div class="box-body">
                   <div class="form-group">
                       <label for="exampleInputEmail1">الاسم</label>
-                      <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="exampleInputEmail1" placeholder="الاسم" value="{{old('name', $user->name)}}">
+                      <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="exampleInputEmail1" placeholder="الاسم" value="{{ isset($user)? old('name', $user->name) : old('name') }}">
                       @error('name')
                             <div class="alert alert-danger">{{ $message }}</div>
                       @enderror
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">البريد الالكتروني</label>
-                      <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="exampleInputEmail1" placeholder="البريد الالكتروني" value="{{old('email', $user->email)}}">
+                      <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="exampleInputEmail1" placeholder="البريد الالكتروني" value="{{ isset($user)? old('email', $user->email) : old('email') }}">
                       @error('email')
                             <div class="alert alert-danger">{{ $message }}</div>
                       @enderror

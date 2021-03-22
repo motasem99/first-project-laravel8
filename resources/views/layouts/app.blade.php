@@ -258,6 +258,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <li><a href="{{ url('dashboard/users') }}">عرض المستخدمين</a></li>
               </ul>
             </li>
+            <li class="treeview">
+              <a href="#"><i class="fa fa-link"></i> <span>الورديات</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <ul class="treeview-menu">
+                <li><a href="{{ url('dashboard/shifts/create') }}">اضافة وردية</a></li>
+                <li><a href="{{ url('dashboard/shifts') }}">عرض وردية</a></li>
+              </ul>
+            </li>
           </ul><!-- /.sidebar-menu -->
         </section>
         <!-- /.sidebar -->
@@ -366,24 +373,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Bootstrap 3.3.4 -->
     <script src="{{url('assets')}}/bootstrap/js/bootstrap.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="{{url('assets')}}/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="{{url('assets')}}/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    @stack('java_script')
+    
     <script src="{{url('assets')}}/dist/js/app.min.js"></script>
 
-    <!-- page script -->
-    <script>
-      $(function () {
-        $("#example1").DataTable();
-        $('#example2').DataTable({
-          "paging": true,
-          "lengthChange": false,
-          "searching": false,
-          "ordering": true,
-          "info": true,
-          "autoWidth": false
-        });
-      });
-    </script>
+    @stack('jquery')
 
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
          Both of these plugins are recommended to enhance the

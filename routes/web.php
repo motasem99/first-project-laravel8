@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ShiftsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,13 @@ Route::group(['middleware'=> 'auth'], function () {
         Route::get('/users/delete/{id}', [UsersController::class, 'destroy']);
         Route::post('/users/update/{id}', [UsersController::class, 'update']);
         Route::get('/users/{id}/edit', [UsersController::class, 'edit']);
+
+        Route::get('/shifts', [ShiftsController::class, 'index']);
+        Route::get('/shifts/create', [ShiftsController::class, 'create']);
+        Route::post('/shifts/save', [ShiftsController::class, 'store']);
+        Route::get('/shifts/delete/{id}', [ShiftsController::class, 'destroy']);
+        Route::post('/shifts/update/{id}', [ShiftsController::class, 'update']);
+        Route::get('/shifts/{id}/edit', [ShiftsController::class, 'edit']);
     });
 });
 
