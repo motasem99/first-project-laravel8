@@ -126,13 +126,13 @@
                     shifts.append('start_at', $('#start_at').val());
                     shifts.append('end_at', $('#end_at').val());
 
-                    shifts.append('saturday', $('#saturday').val());
-                    shifts.append('sunday', $('#sunday').val());
-                    shifts.append('monday', $('#monday').val());
-                    shifts.append('tuesday', $('#tuesday').val());
-                    shifts.append('wednesday', $('#wednesday').val());
-                    shifts.append('thursday', $('#thursday').val());
-                    shifts.append('friday', $('#friday').val());
+                    shifts.append('saturday', $('#saturday').is(':checked') ? 1 : 0);
+                    shifts.append('sunday', $('#sunday').is(':checked') ? 1 : 0);
+                    shifts.append('monday', $('#monday').is(':checked') ? 1 : 0);
+                    shifts.append('tuesday', $('#tuesday').is(':checked') ? 1 : 0);
+                    shifts.append('wednesday', $('#wednesday').is(':checked') ? 1 : 0);
+                    shifts.append('thursday', $('#thursday').is(':checked') ? 1 : 0);
+                    shifts.append('friday', $('#friday').is(':checked') ? 1 : 0);
 
                     $('input').attr('disabled', 'disabled');
                     $('button').attr('disabled', 'disabled');
