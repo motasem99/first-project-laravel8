@@ -54,6 +54,8 @@ class ShiftsController extends Controller
         $shift->friday=$request->friday;
 
         $shift->save();
+
+        return response()->json(['message'=>"تم اضافة الوردية بنجاح"]);
     }
 
     /**

@@ -15,11 +15,9 @@
                 <!-- form start -->
                 <form role="form" method="post" id="saveShift" >
                 @csrf
-                    @if(session()->has('message'))
-                        <div class="alert alert-success">
-                            {{ session()->get('message') }}
+                        <div class="alert alert-success" id="alert" style="display: none">
                         </div>
-                    @endif
+                    
                   <div class="box-body">
                   <div class="form-group">
                       <label for="exampleInputEmail1">اسم الوردية</label>
@@ -146,11 +144,13 @@
                         cache: false,
 
                         success: function (response) {
-                            $('#alert').show();
-                            $('#alert').fadeOut(10000);
                             $('input').removeAttr('disabled');
                             $('button').removeAttr('disabled');
-                            $('#email_list').val('');
+                            $('#alert').show();
+                            $('#alert').html(response.message);
+                            $('#alert').fadeOut(10000);
+
+                            $('#name').val('');
                         },
                         error: function (response) {
                             $('input').removeAttr('disabled');
