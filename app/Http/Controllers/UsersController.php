@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Shift;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Foundation\Auth\User as AuthUser;
 use Illuminate\Http\Request;
@@ -32,7 +33,8 @@ class UsersController extends Controller
     public function create()
     {
         //
-        return view('dashboard.users.create');
+        $shifts=Shift::get();
+        return view('dashboard.users.create', compact('shifts'));
     }
 
     /**

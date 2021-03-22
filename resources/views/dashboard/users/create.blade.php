@@ -43,6 +43,18 @@
                       @enderror
                     </div>
                     <div class="form-group">
+                      <label for="exampleInputPassword1">الوردية</label>
+                      <select name="shift_id" class="form-control @error('shift_id') is-invalid @enderror" id="shift_id" placeholder="choose">
+                      <option value=""></option>
+                        @foreach($shifts as $shift)
+                        <option value="{{ $shift->id }}">{{ $shift->name }}</option>
+                        @endforeach
+                      </select>
+                      @error('password')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                      @enderror
+                    </div>
+                    <div class="form-group">
                       <label for="exampleInputPassword1">اعادة كلمة المرور</label>
                       <input type="password" name="conf_password" class="form-control @error('conf_password') is-invalid @enderror" id="exampleInputPassword1" placeholder="اعادة كلمة المرور" value="{{old('conf_password')}}">
                       @error('conf_password')

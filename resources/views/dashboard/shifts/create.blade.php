@@ -151,6 +151,9 @@
                             $('#alert').fadeOut(10000);
 
                             $('#name').val('');
+                            setTimeout(() => {
+                                window.location="{{ url('dashboard/shifts') }}"
+                            }, 3000);
                         },
                         error: function (response) {
                             $('input').removeAttr('disabled');
