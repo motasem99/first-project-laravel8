@@ -67,7 +67,7 @@
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">الخميس</label>
-                      <input type="checkbox" name="thuresday"  id="thuresday" checked>
+                      <input type="checkbox" name="thursday"  id="thursday" checked>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">الجمعة</label>
@@ -89,6 +89,24 @@
 
     <script>
         $(document).ready(function(){
+            $.validator.setDefaults({
+                highlight: function (element) {
+                    $(element).closest('.form-group').addClass('has-error');
+                },
+                unhighlightL: function (element) {
+                    $(element).closest('.form-group').removeClass('has-error');
+                },
+                errorElement: 'span',
+                errorClass: 'error-block',
+                errorPlacement: function (error, element) {
+                    if(element.parent('.input-group').lenght) {
+                        error.insertAfter(element.parent());
+                    } else {
+                        error.insertAfter(element);
+                    }
+                }
+            });
+
             $('#saveShift').validate({
                 rules: {
                     name: {required: true},
@@ -99,6 +117,50 @@
                     name: {required: 'هذا الحقل مطلوب'},
                     start_at: {required: 'هذا الحقل مطلوب'},
                     end_ar: {required: 'هذا الحفل مطلوب'},
+                },
+
+                submitHandler: function (form) {
+                    var shifts = new FormData();
+                    shifts.append('_token', '{{ csrf_token() }}');
+                    shifts.append('name', $('#name').val());
+                    shifts.append('start_at', $('#start_at').val());
+                    shifts.append('end_at', $('#end_at').val());
+
+                    shifts.append('saturday', $('#saturday').val());
+                    shifts.append('sunday', $('#sunday').val());
+                    shifts.append('monday', $('#monday').val());
+                    shifts.append('tuesday', $('#tuesday').val());
+                    shifts.append('wednesday', $('#wednesday').val());
+                    shifts.append('thursday', $('#thursday').val());
+                    shifts.append('friday', $('#friday').val());
+
+                    $('input').attr('disabled', 'disabled');
+                    $('button').attr('disabled', 'disabled');
+
+                    $.ajax({ 
+                        url: "{{ url('dashboard/shifts/save') }}", 
+                        type: 'POST',
+                        dataType: 'json',
+                        data: shifts,
+                        async: false,
+                        cache: false,
+
+                        success: function (response) {
+                            $('#alert').show();
+                            $('#alert').fadeOut(10000);
+                            $('input').removeAttr('disabled');
+                            $('button').removeAttr('disabled');
+                            $('#email_list').val('');
+                        },
+                        error: function (response) {
+                            $('input').removeAttr('disabled');
+                            $('button').removeAttr('disabled');
+                            $('#faild_send').show();
+                            $('#faild_send').fadeOut(10000);
+                        },
+                        contentType: false,
+                        processData: false,
+                    });
                 }
             });
         });
