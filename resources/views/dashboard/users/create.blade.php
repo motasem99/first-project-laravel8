@@ -44,13 +44,13 @@
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">الوردية</label>
-                      <select name="shift_id" class="form-control @error('shift_id') is-invalid @enderror" id="shift_id" placeholder="choose">
+                      <select name="shift_id" class="form-control @error('shift_id') is-invalid @enderror" id="shift_id" placeholder="choose" >
                       <option value=""></option>
                         @foreach($shifts as $shift)
-                        <option value="{{ $shift->id }}">{{ $shift->name }}</option>
+                        <option value="{{ $shift->id }}" @if(isset($user) && $user->shift_id==$shift->id) selected @endif>{{ $shift->name }}</option>
                         @endforeach
                       </select>
-                      @error('password')
+                      @error('shift_id')
                             <div class="alert alert-danger">{{ $message }}</div>
                       @enderror
                     </div>
