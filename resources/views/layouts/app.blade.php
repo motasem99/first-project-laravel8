@@ -285,7 +285,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </section>
 
         <!-- Main content -->
-        <section class="content">
+        <section class="content" id="app">
 
         @yield('content')
 
@@ -374,7 +374,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="{{url('assets')}}/bootstrap/js/bootstrap.min.js"></script>
     <!-- AdminLTE App -->
     @stack('java_script')
-    
+
     <script src="{{url('assets')}}/dist/js/app.min.js"></script>
 
     @stack('jquery')

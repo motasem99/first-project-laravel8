@@ -35,6 +35,13 @@ Route::group(['middleware'=> 'auth'], function () {
         Route::get('/shifts/delete/{id}', [ShiftsController::class, 'destroy']);
         Route::post('/shifts/update/{id}', [ShiftsController::class, 'update']);
         Route::get('/shifts/{id}/edit', [ShiftsController::class, 'edit']);
+
+        Route::get('/news', [NewsController::class, 'index']);
+        Route::get('/news/create', [NewsController::class, 'create']);
+        Route::post('/news/save', [NewsController::class, 'store']);
+        Route::get('/news/delete/{id}', [NewsController::class, 'destroy']);
+        Route::post('/news/update/{id}', [NewsController::class, 'update']);
+        Route::get('/news/{news}/edit', [NewsController::class, 'edit']);
     });
 });
 
