@@ -3851,7 +3851,16 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
   \*************************************************/
 /***/ (() => {
 
-
+Vew.Component("add-news", {
+  data: function data() {
+    return {
+      title: "اضافة خبر",
+      errors: []
+    };
+  },
+  props: [],
+  methods: {}
+});
 
 /***/ }),
 
