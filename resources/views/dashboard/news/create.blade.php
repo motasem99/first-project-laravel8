@@ -3,7 +3,6 @@
 @section('content')
 <add-news inline-template>
 
-
 <section class="content">
     <div class="row">
         <div class="col-md-12">
@@ -31,5 +30,4 @@
 </section>
 
 </add-news>
-
 @endsection
