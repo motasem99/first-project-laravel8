@@ -1,4 +1,4 @@
-Vew.Component("add-news", {
+Vue.component("add-news", {
     data() {
         return {
             title: "اضافة خبر",
