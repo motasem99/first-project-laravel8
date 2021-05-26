@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\News;
 use App\Models\Shift;
 use Illuminate\Http\Request;
 
@@ -38,6 +39,20 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         //
+        $validated = $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'shift_id' => 'required',
+
+        ], [],["name" => 'اسم المستخدم', 'description' => 'تفاصيل الخبر' , 'shift_id'=>'تصنيف الخبر']);
+        //
+        $new= new News();
+        $new->name = $request->name;
+        $new->description = $request->description;
+        $new->shift_id = $request->shift_id;
+
+        $new->save();
+        return redirect()->back()->with('message', 'تم اضافة الخبر بنجاح');
     }
 
     /**
