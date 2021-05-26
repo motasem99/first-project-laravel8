@@ -109,5 +109,8 @@ class ShiftsController extends Controller
     public function destroy($id)
     {
         //
+        $shift=Shift::find($id);
+        $shift->delete();
+        return redirect()->back()->with('message', 'تم حذف التصنيف بنجاح');
     }
 }
