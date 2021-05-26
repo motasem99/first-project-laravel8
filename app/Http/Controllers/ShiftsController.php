@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Shift;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ShiftsController extends Controller
@@ -15,6 +16,8 @@ class ShiftsController extends Controller
     public function index()
     {
         //
+        $shifts=Shift::get();
+        return view('dashboard.shifts.index', compact('shifts'));
     }
 
     /**

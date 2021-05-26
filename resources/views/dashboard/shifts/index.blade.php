@@ -6,7 +6,7 @@
         <div class="col-md-12">
         <div class="box box-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title">عرض المستخدمين</h3>
+                  <h3 class="box-title">عرض التصنيفات</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
                 @csrf
@@ -19,21 +19,21 @@
                   <table id="example2" class="table table-bordered table-hover">
                     <thead>
                       <tr>
-                        <th>اسم الموظف</th>
-                        <th>البريد الالكتروني</th>
+                        <th>اسم التصنيف</th>
                         <th>تاريخ التفعيل</th>
+                        <th>تاريخ الانتهاء</th>
                         <th>عمليات</th>
                       </tr>
                     </thead>
                     <tbody>
-                    @foreach($users as $user)
+                    @foreach($shifts as $shift)
                       <tr>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>{{ $user->email_verified_at }}</td>
+                        <td>{{ $shift->name }}</td>
+                        <td>{{ $shift->start_at }}</td>
+                        <td>{{ $shift->end_at }}</td>
                         <td>
-                        <a href="{{ url('dashboard/users/delete/'.$user->id) }}"><i class="fa fa-fw fa-times-circle" style="font-size: 23px; color: red"></i></a>
-                        <a href="{{ url('dashboard/users/'.$user->id.'/edit') }}"><i class="fa fa-fw fa-edit" style="font-size: 23px; color: green"></i></a>
+                        <a href="{{ url('dashboard/users/delete/'.$shift->id) }}"><i class="fa fa-fw fa-times-circle" style="font-size: 23px; color: red"></i></a>
+                        <a href="{{ url('dashboard/users/'.$shift->id.'/edit') }}"><i class="fa fa-fw fa-edit" style="font-size: 23px; color: green"></i></a>
                         </td>
                       </tr>
                       @endforeach
@@ -50,7 +50,7 @@
 @push('java_script')
     <script src="{{url('assets')}}/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="{{url('assets')}}/plugins/datatables/dataTables.bootstrap.min.js"></script>
-    
+
 @endpush
 
 @push('jquery')
