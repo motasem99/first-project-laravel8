@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<add-news inline-template>
 
 <section class="content">
     <div class="row">
@@ -29,5 +28,4 @@
     </div>
 </section>
 
-</add-news>
 @endsection

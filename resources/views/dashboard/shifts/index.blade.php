@@ -20,8 +20,6 @@
                     <thead>
                       <tr>
                         <th>اسم التصنيف</th>
-                        <th>تاريخ التفعيل</th>
-                        <th>تاريخ الانتهاء</th>
                         <th>عمليات</th>
                       </tr>
                     </thead>
@@ -29,11 +27,9 @@
                     @foreach($shifts as $shift)
                       <tr>
                         <td>{{ $shift->name }}</td>
-                        <td>{{ $shift->start_at }}</td>
-                        <td>{{ $shift->end_at }}</td>
                         <td>
-                        <a href="{{ url('dashboard/users/delete/'.$shift->id) }}"><i class="fa fa-fw fa-times-circle" style="font-size: 23px; color: red"></i></a>
-                        <a href="{{ url('dashboard/users/'.$shift->id.'/edit') }}"><i class="fa fa-fw fa-edit" style="font-size: 23px; color: green"></i></a>
+                        <a href="{{ url('dashboard/shifts/delete/'.$shift->id) }}"><i class="fa fa-fw fa-times-circle" style="font-size: 23px; color: red"></i></a>
+                        <a href="{{ url('dashboard/shifts/'.$shift->id.'/edit') }}"><i class="fa fa-fw fa-edit" style="font-size: 23px; color: green"></i></a>
                         </td>
                       </tr>
                       @endforeach

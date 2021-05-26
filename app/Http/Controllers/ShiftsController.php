@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Shift;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule as ValidationRule;
+
 
 class ShiftsController extends Controller
 {
@@ -43,22 +46,14 @@ class ShiftsController extends Controller
         $validated = $request->validate([
             'name' => 'required',
 
-        ], [],["name" => 'اسم المستخدم']);
+        ], [],["name" => 'اسم التصنيف']);
+
         $shift = new Shift();
         $shift->name=$request->name;
-        $shift->start_at=$request->start_at;
-        $shift->end_at=$request->end_at;
-        $shift->saturday=$request->saturday;
-        $shift->sunday=$request->sunday;
-        $shift->monday=$request->monday;
-        $shift->tuesday=$request->tuesday;
-        $shift->wednesday=$request->wednesday;
-        $shift->thursday=$request->thursday;
-        $shift->friday=$request->friday;
 
         $shift->save();
 
-        return response()->json(['message'=>"تم اضافة الوردية بنجاح"]);
+        return response()->json(['message'=>"تم اضافة التصنيف بنجاح"]);
     }
 
     /**
@@ -81,6 +76,9 @@ class ShiftsController extends Controller
     public function edit($id)
     {
         //
+        $shifts=Shift::find($id);
+        // $shifts=Shift::get();
+        return view('dashboard.shifts.create', compact( 'shifts'));
     }
 
     /**
@@ -92,7 +90,14 @@ class ShiftsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required',
+        ], [],["name" => 'اسم التصنيف']);
+
+        $shift= Shift::find($id);
+        $shift->name = $request->name;
+        $shift->save();
+        return redirect()->back()->with('message', 'تم تعديل التصنيف بنجاح');
     }
 
     /**
