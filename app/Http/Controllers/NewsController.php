@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Shift;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -24,7 +25,8 @@ class NewsController extends Controller
     public function create()
     {
         //
-        return view('dashboard.news.create');
+        $shifts=Shift::get();
+        return view('dashboard.news.create', compact('shifts'));
     }
 
     /**
