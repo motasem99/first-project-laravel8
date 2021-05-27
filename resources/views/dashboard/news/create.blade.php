@@ -14,7 +14,7 @@
                   @endif
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" method="post" id="saveShift" >
+                <form role="form" method="post" id="saveNews" >
                 @if(session()->has('message'))
                     <div class="alert alert-success">
                         {{ session()->get('message') }}
@@ -79,7 +79,7 @@
                 }
             });
 
-            $('#saveShift').validate({
+            $('#saveNews').validate({
                 rules: {
                     name: {required: true},
                     description: {required: true},
@@ -92,11 +92,11 @@
                 },
 
                 submitHandler: function (form) {
-                    var shifts = new FormData();
-                    shifts.append('_token', '{{ csrf_token() }}');
-                    shifts.append('name', $('#name').val());
-                    shifts.append('description', $('#description').val());
-                    shifts.append('shift_id', $('#shift_id').val());
+                    var news = new FormData();
+                    news.append('_token', '{{ csrf_token() }}');
+                    news.append('name', $('#name').val());
+                    news.append('description', $('#description').val());
+                    news.append('shift_id', $('#shift_id').val());
 
                     $('input').attr('disabled', 'disabled');
                     $('button').attr('disabled', 'disabled');
@@ -105,7 +105,7 @@
                         url: "{{ url('dashboard/news/save') }}",
                         type: 'POST',
                         dataType: 'json',
-                        data: shifts,
+                        data: news,
                         async: false,
                         cache: false,
 

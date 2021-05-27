@@ -16,6 +16,8 @@ class NewsController extends Controller
     public function index()
     {
         //
+        $news=News::get();
+        return view('dashboard.news.index', compact('news'));
     }
 
     /**
@@ -44,7 +46,7 @@ class NewsController extends Controller
             'description' => 'required',
             'shift_id' => 'required',
 
-        ], [],["name" => 'اسم المستخدم', 'description' => 'تفاصيل الخبر' , 'shift_id'=>'تصنيف الخبر']);
+        ], [],["name" => 'اسم التصنيف', 'description' => 'تفاصيل الخبر' , 'shift_id'=>'تصنيف الخبر']);
         //
         $new= new News();
         $new->name = $request->name;

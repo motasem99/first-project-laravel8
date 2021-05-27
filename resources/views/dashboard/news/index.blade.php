@@ -26,14 +26,14 @@
                       </tr>
                     </thead>
                     <tbody>
-                    @foreach($users as $user)
+                    @foreach($news as $new)
                       <tr>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>{{ $user->email_verified_at }}</td>
+                        <td>{{ $new->name }}</td>
+                        <td>{{ $new->description }}</td>
+                        <td>{{ $new->created_at }}</td>
                         <td>
-                        <a href="{{ url('dashboard/users/delete/'.$user->id) }}"><i class="fa fa-fw fa-times-circle" style="font-size: 23px; color: red"></i></a>
-                        <a href="{{ url('dashboard/users/'.$user->id.'/edit') }}"><i class="fa fa-fw fa-edit" style="font-size: 23px; color: green"></i></a>
+                        <a href="{{ url('dashboard/new/delete/'.$new->id) }}"><i class="fa fa-fw fa-times-circle" style="font-size: 23px; color: red"></i></a>
+                        <a href="{{ url('dashboard/new/'.$new->id.'/edit') }}"><i class="fa fa-fw fa-edit" style="font-size: 23px; color: green"></i></a>
                         </td>
                       </tr>
                       @endforeach
@@ -50,7 +50,7 @@
 @push('java_script')
     <script src="{{url('assets')}}/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="{{url('assets')}}/plugins/datatables/dataTables.bootstrap.min.js"></script>
-    
+
 @endpush
 
 @push('jquery')
