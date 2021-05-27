@@ -19,9 +19,9 @@
                   <table id="example2" class="table table-bordered table-hover">
                     <thead>
                       <tr>
-                        <th>اسم الموظف</th>
-                        <th>البريد الالكتروني</th>
-                        <th>تاريخ التفعيل</th>
+                        <th>عنوان الخبر</th>
+                        <th>تفاصيل الخبر</th>
+                        <th>تاريخ الخبر</th>
                         <th>عمليات</th>
                       </tr>
                     </thead>
