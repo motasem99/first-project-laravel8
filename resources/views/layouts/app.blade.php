@@ -259,10 +259,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </ul>
             </li>
             <li class="treeview">
-              <a href="#"><i class="fa fa-link"></i> <span>الورديات</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <a href="#"><i class="fa fa-link"></i> <span>التصنيفات</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="{{ url('dashboard/shifts/create') }}">اضافة وردية</a></li>
-                <li><a href="{{ url('dashboard/shifts') }}">عرض وردية</a></li>
+                <li><a href="{{ url('dashboard/shifts/create') }}">اضافة تصنيف</a></li>
+                <li><a href="{{ url('dashboard/shifts') }}">عرض التصنيفات</a></li>
               </ul>
             </li>
             <li class="treeview">
