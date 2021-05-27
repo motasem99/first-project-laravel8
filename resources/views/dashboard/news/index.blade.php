@@ -32,8 +32,8 @@
                         <td>{{ $new->description }}</td>
                         <td>{{ $new->created_at }}</td>
                         <td>
-                        <a href="{{ url('dashboard/new/delete/'.$new->id) }}"><i class="fa fa-fw fa-times-circle" style="font-size: 23px; color: red"></i></a>
-                        <a href="{{ url('dashboard/new/'.$new->id.'/edit') }}"><i class="fa fa-fw fa-edit" style="font-size: 23px; color: green"></i></a>
+                        <a href="{{ url('dashboard/news/delete/'.$new->id) }}"><i class="fa fa-fw fa-times-circle" style="font-size: 23px; color: red"></i></a>
+                        <a href="{{ url('dashboard/news/'.$new->id.'/edit') }}"><i class="fa fa-fw fa-edit" style="font-size: 23px; color: green"></i></a>
                         </td>
                       </tr>
                       @endforeach

@@ -100,5 +100,8 @@ class NewsController extends Controller
     public function destroy($id)
     {
         //
+        $news=News::find($id);
+        $news->delete();
+        return redirect()->back()->with('message', 'تم حذف الخبر بنجاح');
     }
 }
