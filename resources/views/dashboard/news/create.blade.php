@@ -104,7 +104,7 @@
                     $.ajax({
                         url: "{{ url('dashboard/news/save') }}",
                         type: 'POST',
-                        dataType: 'json',
+                        dataType: 'text',
                         data: news,
                         async: false,
                         cache: false,
@@ -117,6 +117,8 @@
                             $('#alert').fadeOut(10000);
 
                             $('#name').val('');
+                            $('#description').val('');
+                            $('#shift_id').val('');
                             setTimeout(() => {
                                 window.location="{{ url('dashboard/news') }}"
                             }, 3000);
