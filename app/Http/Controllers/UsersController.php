@@ -50,7 +50,6 @@ class UsersController extends Controller
             'email' => 'required|unique:users|email',
             'password' => 'required|same:conf_password|min:6',
             'conf_password' => 'required',
-            'shift_id' => 'required',
 
         ], [],["name" => 'اسم المستخدم', 'email' => 'البريد الالكتروني','password'=>'كلمة المرور', 'conf_password'=>'تاكيد كلمة المرور  ' ]);
         //
@@ -59,7 +58,6 @@ class UsersController extends Controller
         $user->email = $request->email;
         $user->email_verified_at=date('Y-m-d H:i:s');
         $user->password=Hash::make($request->password);
-        $user->shift_id = $request->shift_id;
 
         $user->save();
         return redirect()->back()->with('message', 'تم اضافة المستخدم بنجاح');
