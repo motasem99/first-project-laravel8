@@ -89,7 +89,7 @@
                                         <a class="page-scroll" href="#about">ABOUT</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="page-scroll" href="#portfolio">PORTFOLIO</a>
+                                        <a class="page-scroll" href="dashboard">DASHBOARD</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="page-scroll" href="#pricing">PRICING</a>
