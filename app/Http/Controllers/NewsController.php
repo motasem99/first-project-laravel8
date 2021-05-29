@@ -77,6 +77,9 @@ class NewsController extends Controller
     public function edit($id)
     {
         //
+        $news=News::find($id);
+        $shifts=Shift::get();
+        return view('dashboard.news.create', compact('news', 'shifts'));
     }
 
     /**
@@ -88,7 +91,20 @@ class NewsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validated = $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'shift_id' => 'required',
+
+        ], [],["name" => 'اسم التصنيف', 'description' => 'تفاصيل الخبر' , 'shift_id'=>'تصنيف الخبر']);
         //
+        $new= News::find($id);
+        $new->name = $request->name;
+        $new->description = $request->description;
+        $new->shift_id = $request->shift_id;
+
+        $new->save();
+        return redirect()->back()->with('message', 'تم تعديل الخبر بنجاح');
     }
 
     /**

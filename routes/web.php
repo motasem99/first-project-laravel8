@@ -42,7 +42,7 @@ Route::group(['middleware'=> 'auth'], function () {
         Route::post('/news/save', [NewsController::class, 'store']);
         Route::get('/news/delete/{id}', [NewsController::class, 'destroy']);
         Route::post('/news/update/{id}', [NewsController::class, 'update']);
-        Route::get('/news/{news}/edit', [NewsController::class, 'edit']);
+        Route::get('/news/{id}/edit', [NewsController::class, 'edit']);
     });
 });
 
