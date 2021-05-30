@@ -16,11 +16,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('getNews', [Api\NewsController::class, 'getNews']);
 Route::post('addNews', [Api\NewsController::class, 'addNews']);
 
+Route::post('login', [Api\NewsController::class, 'login']);
 
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['middleware' => 'auth:api'], function() {
+    Route::get('getNews', [Api\NewsController::class, 'getNews']);
+
 });
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
