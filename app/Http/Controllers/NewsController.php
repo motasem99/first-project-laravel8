@@ -16,7 +16,7 @@ class NewsController extends Controller
     public function index()
     {
         //
-        $news=News::get();
+        $news=News::with('shift')->get();
         return view('dashboard.news.index', compact('news'));
     }
 

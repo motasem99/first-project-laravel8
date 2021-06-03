@@ -19,9 +19,10 @@
                 <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; ">
 
                     @foreach($news as $new)
-                    <div style="    margin: 1rem 1rem; padding: 1rem 3rem; background-color: #88caf1; border-radius: 15px;">
-                        <div>
+                    <div style="margin: 1rem 1rem; padding: 1rem 3rem; background-color: #88caf1; border-radius: 15px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
                             <h2>{{ $new->name }}</h2>
+                            <p style="font-size: 18px;">{{ $new->shift->name }}</p>
                         </div>
                         <div style="padding: .5rem; font-size: 18px;">
                             <p>{{ $new->description }}</p>

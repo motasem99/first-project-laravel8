@@ -11,4 +11,10 @@ class News extends Model
 
     protected $table = 'news';
     protected $guarded = [];
+
+
+    public function shift() {
+        return $this->belongsTo(Shift::class, 'shift_id', 'id');
+    }
 }
+
