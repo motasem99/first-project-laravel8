@@ -102,7 +102,6 @@ class UsersController extends Controller
             'name' =>  ['required', ValidationRule::unique('users')->ignore($id), 'max:100'],
             'email' => ['required', ValidationRule::unique('users')->ignore($id)],
             'password' => 'nullable|same:conf_password|min:6',
-            'shift_id'=> 'required',
             //'conf_password' => 'required',
 
         ], [],["name" => 'اسم المستخدم', 'email' => 'البريد الالكتروني','password'=>'كلمة المرور', 'conf_password'=>'تاكيد كلمة المرور  ' ]);
@@ -113,7 +112,6 @@ class UsersController extends Controller
         if($request->password){
             $user->password=Hash::make($request->password);
         }
-        $user->shift_id = $request->shift_id;
         $user->save();
         return redirect()->back()->with('message', 'تم تعديل المستخدم بنجاح');
     }
