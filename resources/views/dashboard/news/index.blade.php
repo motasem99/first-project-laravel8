@@ -15,32 +15,28 @@
                             {{ session()->get('message') }}
                         </div>
                     @endif
-                <div class="box-body">
-                  <table id="example2" class="table table-bordered table-hover">
-                    <thead>
-                      <tr>
-                        <th>عنوان الخبر</th>
-                        <th>تفاصيل الخبر</th>
-                        <th>تاريخ الخبر</th>
-                        <th>عمليات</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($news as $new)
-                      <tr>
-                        <td>{{ $new->name }}</td>
-                        <td>{{ $new->description }}</td>
-                        <td>{{ $new->created_at }}</td>
-                        <td>
-                        <a href="{{ url('dashboard/news/delete/'.$new->id) }}"><i class="fa fa-fw fa-times-circle" style="font-size: 23px; color: red"></i></a>
-                        <a href="{{ url('dashboard/news/'.$new->id.'/edit') }}"><i class="fa fa-fw fa-edit" style="font-size: 23px; color: green"></i></a>
-                        </td>
-                      </tr>
-                      @endforeach
-                    </tbody>
 
-                  </table>
-                </div><!-- /.box-body -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; ">
+
+                    @foreach($news as $new)
+                    <div style="    margin: 1rem 1rem; padding: 1rem 3rem; background-color: #88caf1; border-radius: 15px;">
+                        <div>
+                            <h2>{{ $new->name }}</h2>
+                        </div>
+                        <div style="padding: .5rem; font-size: 18px;">
+                            <p>{{ $new->description }}</p>
+                        </div>
+                        <div style="padding: .5rem; font-size: 11px;">
+                            <p>{{ $new->created_at }}</p>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: .5rem;">
+                        <a  href="{{ url('dashboard/news/delete/'.$new->id) }}"><i class="fa fa-fw fa-times-circle" style="font-size: 23px; color: red"></i></a>
+                        <a href="{{ url('dashboard/news/'.$new->id.'/edit') }}"><i class="fa fa-fw fa-edit" style="font-size: 23px; color: green"></i></a>
+                        </div>
+                    </div>
+                    @endforeach
+
+                </div>
         </div>
     </div>
 </section>
